@@ -1,8 +1,11 @@
 <?php
 
-use App\Controllers\MainController;
+use App\Controllers\Api\ProductController;
 use App\Kernel\Route;
 
 return [
-    Route::get('/', [MainController::class, 'index'])
+    Route::get('/', function () {
+       echo "Hello World!";
+    }),
+    Route::post('/api/upload', [ProductController::class, 'upload'])
 ];
