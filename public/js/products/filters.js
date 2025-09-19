@@ -71,7 +71,7 @@ function updateUrl(params) {
 export async function loadProducts(params = {}) {
     try {
         const result = await fetchProducts(params);
-        renderProducts(result.data);
+        renderProducts(result.data, result.categoryMedians);
         updatePagination(result.pagination, params);
     } catch (e) {
         console.error(e);

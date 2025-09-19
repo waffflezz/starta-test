@@ -8,6 +8,7 @@ use App\Model\Product;
 use App\Requests\ProductRequest;
 use App\UseCases\GetProductCategoriesUseCase;
 use App\UseCases\GetProductsUseCase;
+use App\UseCases\GetProductsWithMediansUseCase;
 use App\UseCases\ImportProductUseCase;
 
 class ProductController extends Controller
@@ -35,7 +36,7 @@ class ProductController extends Controller
         $page    = (int)$request->input('page', 1);
         $perPage = (int)$request->input('perPage', 12);
 
-        $result = GetProductsUseCase::execute($filters, $sort, $page, $perPage);
+        $result = GetProductsWithMediansUseCase::execute($filters, $sort, $page, $perPage);
 
         $this->json($result);
     }

@@ -58,7 +58,7 @@ class Product extends Model
         $values = [];
 
         foreach ($items as $item) {
-            $placeholders[] = "(?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?)";
+            $placeholders[] = "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $values[] = $item['id'];
             $values[] = $item['name'];
             $values[] = $item['category'];
@@ -66,6 +66,7 @@ class Product extends Model
             $values[] = $item['stock'];
             $values[] = $item['rating'];
             $values[] = $item['reviews_count'];
+            $values[] = $item['created_at'];
             $values[] = $item['image'];
             $values[] = $item['promo'];
         }
@@ -81,6 +82,7 @@ class Product extends Model
                 stock = VALUES(stock),
                 rating = VALUES(rating),
                 reviews_count = VALUES(reviews_count),
+                created_at = VALUES(created_at),
                 image = VALUES(image),
                 promo = VALUES(promo)
             ";
@@ -183,5 +185,30 @@ class Product extends Model
         sort($categories, SORT_STRING | SORT_FLAG_CASE);
 
         return $categories;
+    }
+
+    public static function getCategoryMedians(): array
+    {
+        $pdo = Database::getInstance();
+        $medians = [];
+
+        $categories = $pdo->query("SELECT DISTINCT category FROM " . static::$table)
+            ->fetchAll(PDO::FETCH_COLUMN);
+
+        foreach ($categories as $cat) {
+            $prices = $pdo->query("SELECT price FROM " . static::$table . " WHERE category = " . $pdo->quote($cat) . " ORDER BY price ASC")
+                ->fetchAll(PDO::FETCH_COLUMN);
+
+            if (count($prices) === 0) continue;
+
+            $middle = (int)floor(count($prices)/2);
+            $median = count($prices) % 2 === 0
+                ? ($prices[$middle - 1] + $prices[$middle]) / 2
+                : $prices[$middle];
+
+            $medians[$cat] = $median;
+        }
+
+        return $medians;
     }
 }

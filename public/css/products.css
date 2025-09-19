@@ -156,3 +156,28 @@
     color: #fff;
     border-color: #0077ff;
 }
+
+.product-card__badges {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.product-card__badge {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 4px;
+    background: #ff4757; /* можно менять цвет по типу бейджа */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    white-space: nowrap;
+}
+.product-card__badge--new { background: #2ecc71; }       /* Новинка — зеленый */
+.product-card__badge--top { background: #f1c40f; }       /* Топ-рейтинг — желтый */
+.product-card__badge--deal { background: #e67e22; }      /* Выгодно — оранжевый */
+.product-card__badge--last { background: #e74c3c; }      /* Последний — красный */
