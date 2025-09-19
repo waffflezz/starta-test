@@ -7,6 +7,7 @@ use App\Kernel\Route;
 return [
     Route::get('/admin', [AdminController::class, 'index']),
     Route::get('/products', [\App\Controllers\ProductController::class, 'index']),
+    Route::get('/compare', [\App\Controllers\ProductController::class, 'compare']),
 
     Route::post('/api/upload', [ProductController::class, 'upload']),
     Route::get('/api/products', [ProductController::class, 'index']),

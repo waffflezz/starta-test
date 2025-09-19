@@ -16,6 +16,20 @@ export function renderProducts(products, categoryMedians = {}) {
             <div class="product-card__price">${product.price} ₽</div>
             <div class="product-card__rating">⭐ ${product.rating}</div>
             <div class="product-card__stock">${product.stock} шт.</div>
+            <div class="product-card__compare">
+                <label>
+                    <input 
+                        type="checkbox" 
+                        class="compare-checkbox" 
+                        data-id="${product.id}" 
+                        data-name="${product.name}"
+                        data-price="${product.price}"
+                        data-rating="${product.rating}"
+                        data-stock="${product.stock}"
+                        data-category="${product.category}">
+                    Сравнить
+                </label>
+            </div>
         `;
 
         const median = categoryMedians[product.category] || null;

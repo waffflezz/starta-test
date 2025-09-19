@@ -132,7 +132,6 @@
     margin-top: 6px;
 }
 
-/* === Pagination === */
 .pagination {
     display: flex;
     justify-content: center;
@@ -173,11 +172,61 @@
     font-weight: bold;
     color: #fff;
     border-radius: 4px;
-    background: #ff4757; /* можно менять цвет по типу бейджа */
+    background: #ff4757;
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     white-space: nowrap;
 }
-.product-card__badge--new { background: #2ecc71; }       /* Новинка — зеленый */
-.product-card__badge--top { background: #f1c40f; }       /* Топ-рейтинг — желтый */
-.product-card__badge--deal { background: #e67e22; }      /* Выгодно — оранжевый */
-.product-card__badge--last { background: #e74c3c; }      /* Последний — красный */
+.product-card__badge--new { background: #2ecc71; }
+.product-card__badge--top { background: #f1c40f; }
+.product-card__badge--deal { background: #e67e22; }
+.product-card__badge--last { background: #e74c3c; }
+
+.compare-popover {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    padding: 10px;
+    min-width: 180px;
+    z-index: 1000;
+    font-size: 14px;
+}
+
+.compare-popover__items {
+    margin-bottom: 8px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.compare-popover__item {
+    padding: 4px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.compare-popover__item:last-child {
+    border-bottom: none;
+}
+
+.compare-popover__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.compare-popover__btn {
+    flex: 1;
+    padding: 6px 8px;
+    font-size: 13px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.compare-popover__btn--compare {
+    background: #4caf50;
+    color: #fff;
+}
+.compare-popover__btn--clear {
+    background: #f44336;
+    color: #fff;
+}
+

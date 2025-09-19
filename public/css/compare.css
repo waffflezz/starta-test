@@ -1,0 +1,68 @@
+.compare-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 20px;
+}
+
+.compare-title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.compare-table-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.compare-table {
+    border-collapse: collapse;
+    width: auto;
+    min-width: 700px;
+    max-width: 90%;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-size: 16px;
+}
+
+.compare-table th,
+.compare-table td {
+    border: 1px solid #e0e0e0;
+    padding: 14px 18px;
+    text-align: center;
+}
+
+.compare-table th {
+    background: #f0f2f5;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.compare-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.compare-table tbody tr:hover {
+    background: #f5faff;
+    transition: background 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .compare-table {
+        font-size: 14px;
+        min-width: 100%;
+    }
+
+    .compare-table th,
+    .compare-table td {
+        padding: 10px;
+    }
+}
