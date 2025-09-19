@@ -12,4 +12,11 @@ class ProductRequest extends Request
             'file' => 'required|file',
         ];
     }
+
+    public function data(): array
+    {
+        return [
+            'products' => $this->file('file')
+        ];
+    }
 }

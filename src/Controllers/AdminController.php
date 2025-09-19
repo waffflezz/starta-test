@@ -5,11 +5,12 @@ namespace App\Controllers;
 use App\Kernel\Controller;
 use App\Kernel\Exceptions\ViewNotFoundException;
 
-class ProductController extends Controller {
+class AdminController extends Controller
+{
     /**
      * @throws ViewNotFoundException
      */
     public function index(): void {
-        $this->render('products');
+        $this->render('admin');
     }
 }

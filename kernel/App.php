@@ -13,6 +13,6 @@ class App {
     }
 
     public function run(): void {
-        $this->router->dispatch($this->request->uri(), $this->request->method());
+        $this->router->dispatch($this->request->uri(), $this->request->method(), '/products');
     }
 }

@@ -21,10 +21,14 @@ class Router
         $this->view = $view;
     }
 
-    public function dispatch(string $uri, string $method)
+    public function dispatch(string $uri, string $method, ?string $redirect = null)
     {
         $route = $this->findRoute($uri, $method);
         if (!$route) {
+            if ($redirect) {
+                header("Location: $redirect");
+                exit;
+            }
             http_response_code(404);
             echo json_encode(['error' => 'not found']);
             exit;

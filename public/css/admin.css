@@ -1,0 +1,80 @@
+.upload {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.upload__title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.upload__form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.upload__input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.upload__button {
+    background: #4a90e2;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.upload__button:hover {
+    background: #357ab7;
+}
+
+.upload__messages {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.upload__error {
+    color: #e74c3c;
+    font-size: 0.95rem;
+    margin: 5px 0;
+}
+
+.upload__success {
+    color: #27ae60;
+    font-size: 0.95rem;
+    margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+    .upload__form {
+        flex-direction: column;
+    }
+
+    .upload__button {
+        width: 100%;
+    }
+
+    .header__nav {
+        gap: 10px;
+    }
+
+    .header__link {
+        font-size: 0.9rem;
+    }
+}

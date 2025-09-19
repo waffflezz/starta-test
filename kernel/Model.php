@@ -111,4 +111,41 @@ class Model
     {
         return $this->attributes;
     }
+
+    public static function paginate(int $page = 1, int $perPage = 10, string $orderBy = 'created_at', string $direction = 'DESC'): array
+    {
+        $pdo = Database::getInstance();
+
+        $totalStmt = $pdo->query("SELECT COUNT(*) FROM " . static::$table);
+        $total = (int)$totalStmt->fetchColumn();
+
+        $offset = ($page - 1) * $perPage;
+
+        // Безопасная подстановка столбца и направления
+        $allowedColumns = ['id','name','created_at','price','rating','stock'];
+        if (!in_array($orderBy, $allowedColumns)) $orderBy = 'created_at';
+        $direction = strtoupper($direction) === 'ASC' ? 'ASC' : 'DESC';
+
+        $stmt = $pdo->prepare("
+        SELECT * 
+        FROM " . static::$table . "
+        ORDER BY " . $orderBy . " " . $direction . "
+        LIMIT :limit OFFSET :offset
+    ");
+        $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return [
+            'data' => $items,
+            'pagination' => [
+                'total' => $total,
+                'per_page' => $perPage,
+                'current_page' => $page,
+                'last_page' => (int)ceil($total / $perPage),
+            ]
+        ];
+    }
 }

@@ -83,4 +83,9 @@ class Request
     {
         return $this->errors;
     }
+
+    public function data(): array
+    {
+        return [];
+    }
 }
