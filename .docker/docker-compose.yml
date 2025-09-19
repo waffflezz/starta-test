@@ -1,6 +1,7 @@
 services:
   nginx:
     image: nginx:latest
+    container_name: starta-nginx
     ports:
       - "80:80"
     volumes:
@@ -9,11 +10,13 @@ services:
 
   php:
     build: ./php
+    container_name: starta-php
     volumes:
       - ../:/var/www/html
 
   mysql:
     image: mysql:latest
+    container_name: starta-mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
       MYSQL_DATABASE: ${DB_NAME}
@@ -23,6 +26,7 @@ services:
       - db_data:/var/lib/mysql
 
   phpmyadmin:
+    container_name: starta-phpmyadmin
     image: phpmyadmin
     environment:
       - PMA_ARBITRARY=1
